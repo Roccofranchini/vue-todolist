@@ -1,0 +1,15 @@
+#root .container .form-control:focus {
+	box-shadow: 0 0 0 0.25rem rgba(26, 225, 36, 0.25);
+	border-color: rgb(26, 225, 36);
+}
+
+#root .container .btn-outline-secondary:hover {
+	background-color: rgb(26, 225, 36);
+	border-color: rgba(26, 225, 36, 0.357);
+}
+
+#root .container .btn-close:focus {
+	outline: 0;
+	box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.66);
+	opacity: 1;
+}

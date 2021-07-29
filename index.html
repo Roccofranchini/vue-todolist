@@ -13,10 +13,59 @@
 		<link rel="stylesheet" href="./css/style.css" />
 		<title>Todolist</title>
 		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-		<script src="./js/script.js"></script>
 	</head>
 
 	<body>
-		<section id="root"></section>
+		<div id="root">
+			<header class="my-2">
+				<figure class="mx-auto w-25">
+					<h1 class="text-center text-success">TODO-LIST</h1>
+				</figure>
+			</header>
+			<main class="container">
+				<div class="input-group mb-3">
+					<input
+						type="text"
+						class="form-control"
+						placeholder="Scrivi qui.."
+						aria-label="Recipient's username"
+						aria-describedby="button-addon2"
+						v-model="newTask"
+					/>
+					<button
+						class="btn btn-outline-secondary"
+						type="button"
+						id="button-addon2"
+						@click="addTask"
+					>
+						Aggiungi
+					</button>
+				</div>
+
+				<h3 class="text-center my-4 text-danger" v-if="!tasks.length">
+					No more tasks
+				</h3>
+				<ul class="list-group" v-else>
+					<li
+						v-for="(task, index) in tasks"
+						class="
+							list-group-item
+							d-flex
+							justify-content-between
+							align-items-center
+						"
+					>
+						{{ task }}
+						<button
+							type="button"
+							class="btn-close"
+							aria-label="Close"
+							@click="deleteTask(index)"
+						></button>
+					</li>
+				</ul>
+			</main>
+		</div>
+		<script src="./js/script.js"></script>
 	</body>
 </html>
