@@ -22,24 +22,41 @@
 					<h1 class="text-center text-success">TODO-LIST</h1>
 				</figure>
 			</header>
-			<main class="container">
-				<div class="input-group mb-3">
+			<main class="container w-50">
+				<div class="input-group mb-3" v-if="tasks.length">
 					<input
 						type="text"
 						class="form-control"
-						placeholder="Scrivi qui.."
+						placeholder="Cerca.."
 						aria-label="Recipient's username"
 						aria-describedby="button-addon2"
-						v-model="newTask"
+						v-model="searchTerm"
+						@keyup.enter="addTask"
 					/>
-					<button
-						class="btn btn-outline-secondary"
-						type="button"
-						id="button-addon2"
-						@click="addTask"
-					>
-						Aggiungi
-					</button>
+					<span class="input-group-text">search</span>
+				</div>
+				<div v-if="!tasks.length" class="input-group">
+					<ul class="w-100">
+						<li class="d-flex">
+							<input
+								type="text"
+								class="form-control"
+								placeholder="Scrivi qui.."
+								aria-label="Recipient's username"
+								aria-describedby="button-addon2"
+								v-model="newTask"
+								@keyup.enter="addTask"
+							/>
+							<button
+								class="btn btn-outline-secondary"
+								type="button"
+								id="button-addon2"
+								@click="addTask"
+							>
+								Aggiungi
+							</button>
+						</li>
+					</ul>
 				</div>
 
 				<h3 class="text-center my-4 text-danger" v-if="!tasks.length">
@@ -62,6 +79,34 @@
 							aria-label="Close"
 							@click="deleteTask(index)"
 						></button>
+					</li>
+					<li>
+						<div class="input-group" v-if="isInputVisible">
+							<input
+								type="text"
+								class="form-control"
+								placeholder="Scrivi qui.."
+								aria-label="Recipient's username"
+								aria-describedby="button-addon2"
+								v-model="newTask"
+								@keyup.enter="addTask"
+							/>
+							<button
+								class="btn btn-outline-secondary"
+								type="button"
+								id="button-addon2"
+								@click="addTask"
+							>
+								Aggiungi
+							</button>
+						</div>
+						<button
+							class="btn btn-success w-100 m-1"
+							v-else
+							@click="toggleInput"
+						>
+							Aggiungi
+						</button>
 					</li>
 				</ul>
 			</main>
