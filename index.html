@@ -65,6 +65,7 @@
 				<ul class="list-group" v-else>
 					<li
 						v-for="(task, index) in tasks"
+						v-if="displayItem(task)"
 						class="
 							list-group-item
 							d-flex

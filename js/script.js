@@ -26,5 +26,11 @@ const root = new Vue({
 			this.isInputVisible = !this.isInputVisible;
 			this.newTask = "";
 		},
+		displayItem(task) {
+			if (!this.searchTerm.trim()) return true;
+			const filter = this.searchTerm.trim().toLowerCase();
+			task = task.toLowerCase();
+			return task.includes(filter);
+		},
 	},
 });
